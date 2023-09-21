@@ -19,10 +19,10 @@ jobs:
                   node-version: 20
 
             - name: NPM Install #we now need to install all our dependencies in this environment
-             run: npm ci #npm clean install - does not write to package.json
+              run: npm ci #npm clean install - does not write to package.json
 
             - name: Run tests #if npm test throws and error this workflow fails.
-              run: npm test
+              run: npm run test
     eslint: #name of first job
         runs-on: ubuntu-latest #sets the env which this job runs on
         steps: #defines the steps necessary
