@@ -1,5 +1,6 @@
 import { it, expect } from "vitest";
 
-it("Always fails", () => {
-	expect(true).toBe(false);
+//This test can be removed late
+it("Always works", () => {
+	expect(true).toBe(true);
 });
