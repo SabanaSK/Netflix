@@ -1,11 +1,10 @@
+import { useParams } from "react-router";
 import moviesData from "../../movies.json";
 import "./moviePage.css";
 
-export const FilmPage = () => {
-	/* const { filmId } = useParams(); */
-	const filmId = 1;
-	/* const filmName = "The Godfather"; */
-	const movieItem = moviesData.find((movie) => movie.id === filmId);
+export const MoviePage = () => {
+	const { movieId } = useParams();
+	const movieItem = moviesData.find((movie) => movie.id === Number(movieId));
 
 	return (
 		<div>
