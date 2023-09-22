@@ -2,9 +2,10 @@ import moviesData from "../../../movies.json";
 import "./moviePage.css";
 
 export const FilmPage = () => {
-	/* const { filmName } = useParams() */
-	const filmName = "The Godfather";
-	const movieItem = moviesData.find((movie) => movie.title === filmName);
+	/* const { filmId } = useParams(); */
+	const filmId = 1;
+	/* const filmName = "The Godfather"; */
+	const movieItem = moviesData.find((movie) => movie.id === filmId);
 
 	return (
 		<div>
