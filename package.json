@@ -9,7 +9,7 @@
 		"deploy": "gh-pages -d dist",
 		"build": "vite build",
 		"eslint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-		"stylelint": "stylelint  **/*.css",
+		"stylelint": "stylelint src/**/*.css",
 		"preview": "vite preview",
 		"test": "vitest"
 	},
