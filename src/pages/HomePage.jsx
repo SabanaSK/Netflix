@@ -1,9 +1,9 @@
-import GetMovieThumbnails from "../movieList";
+import MovieList from "../components/MovieList/movieList";
 export const HomePage = () => {
 	return(
 		<div> 
 	<p>HomePage</p>
-	<GetMovieThumbnails/>
+	<MovieList/>
 	</div>
 	)
 	;
