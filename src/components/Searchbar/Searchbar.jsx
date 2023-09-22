@@ -1,17 +1,9 @@
-import { useState } from "react";
-/* import movie from "../../movies.json"; */
-/* Import Filter */
-/* import MovieList  */
+import PropTypes from 'prop-types';
 
-const SearchBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
- /*  const [filteredData, setFilteredData] = useState(movie); */
-
+const SearchBar = ({ setSearchQuery }) => {
   const handleInputChange = (event) => {
     const { value } = event.target;
     setSearchQuery(value);
-
-   /* Using filter */
   };
 
   return (
@@ -19,12 +11,14 @@ const SearchBar = () => {
       <input 
         type="text"
         placeholder="Search..."
-        value={searchQuery}
-        onChange={handleInputChange}  
+        onChange={handleInputChange}
       />
-    {/*  Movie list component  />  */}
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  setSearchQuery: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
