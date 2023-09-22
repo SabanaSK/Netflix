@@ -2,7 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
-import { FilmPage } from "./pages/FilmPage";
+import { FilmPage } from "./pages/MoviePage/FilmPage";
 import BookmarkPage from "./pages/BookmarkPage";
 function App() {
 	return (
@@ -15,7 +15,7 @@ function App() {
 			</div>
 
 			<Routes>
-				<Route path="/" element={<HomePage />} />
+				<Route path="/Netflix" element={<HomePage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/film/:filmName" element={<FilmPage />} />
 				<Route path="/bookmark" element={<BookmarkPage />} />
