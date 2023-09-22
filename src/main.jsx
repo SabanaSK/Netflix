@@ -3,13 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
-
-
-  const { worker } = await import('./mock/browser')
-  worker.start()
-
-
-
+import("./mock/browser");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
@@ -18,4 +12,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 		</BrowserRouter>
 	</React.StrictMode>
 );
-

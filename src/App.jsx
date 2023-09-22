@@ -1,9 +1,10 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { HomePage } from "./pages/HomePage";
-import { LoginPage } from "./pages/LoginPage";
+import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { MoviePage } from "./pages/MoviePage/MoviePage";
 import BookmarkPage from "./pages/BookmarkPage";
+
 function App() {
 	return (
 		<div>
