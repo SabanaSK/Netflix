@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import styles from "./LoginPage.module.css";
 
-export const LoginPage = () => {
+export const LoginPage = ({ setCookie }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -32,6 +32,7 @@ export const LoginPage = () => {
 			console.log("DATA", data);
 
 			if (response.ok) {
+				setCookie("user", data.user, { path: "/" });
 				setError("");
 				resetForm();
 				// You can handle JWT or other response data here if needed.

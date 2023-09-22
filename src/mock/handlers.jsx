@@ -14,7 +14,12 @@ export const handlers = [
 			if (maybeUser.password === password) {
 				// If the credentials are correct, persist user's authentication in the session
 				sessionStorage.setItem("is-authenticated", "true");
-				return res(ctx.status(200));
+				return res(
+					ctx.status(200),
+					ctx.json({
+						user: username,
+					})
+				);
 			}
 		} else {
 			// If the credentials are incorrect, return a 401 Unauthorized error
