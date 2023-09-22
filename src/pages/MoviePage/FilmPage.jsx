@@ -1,4 +1,4 @@
-import moviesData from "../../../movies.json";
+import moviesData from "../../movies.json";
 import "./moviePage.css";
 
 export const FilmPage = () => {
