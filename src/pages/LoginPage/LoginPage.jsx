@@ -1,7 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import styles from "./LoginPage.module.css";
+import { UserContext } from "../../context/UserContext";
 
-export const LoginPage = ({ setCookie }) => {
+export const LoginPage = () => {
+	const { loginUser } = useContext(UserContext);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -29,10 +31,8 @@ export const LoginPage = ({ setCookie }) => {
 
 			const data = await response.json();
 
-			console.log("DATA", data);
-
 			if (response.ok) {
-				setCookie("user", data.user, { path: "/" });
+				loginUser(data);
 				setError("");
 				resetForm();
 				// You can handle JWT or other response data here if needed.
@@ -47,7 +47,7 @@ export const LoginPage = ({ setCookie }) => {
 	const resetForm = () => {
 		setUsername("");
 		setPassword("");
-		usernameRef.current.focus();
+		/* usernameRef.current.focus(); */
 	};
 
 	return (

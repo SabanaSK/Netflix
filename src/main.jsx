@@ -3,12 +3,18 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
+import { CookiesProvider } from "react-cookie";
+import { UserProvider } from "./context/UserContext.jsx";
 import("./mock/browser");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<CookiesProvider>
+			<UserProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</UserProvider>
+		</CookiesProvider>
 	</React.StrictMode>
 );
