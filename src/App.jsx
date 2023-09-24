@@ -19,14 +19,8 @@ function App() {
 				<Routes>
 					<Route path="/Netflix" element={<HomePage />} />
 					<Route path="/Netflix/login" element={<LoginPage />} />
-					<Route
-						path="/Netflix/movie/:movieId"
-						element={<MoviePage />}
-					/>
-					<Route
-						path="/Netflix/bookmark"
-						element={<BookmarkPage />}
-					/>
+					<Route path="/Netflix/movie/:movieId" element={<MoviePage />} />
+					<Route path="/Netflix/bookmark" element={<BookmarkPage />} />
 				</Routes>
 			</BookmarkProvider>
 		</div>
