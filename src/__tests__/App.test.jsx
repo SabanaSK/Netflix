@@ -1,9 +1,26 @@
 import App from "../App";
-import { it, describe, expect } from "vitest";
+import { it, describe, expect, beforeAll, afterAll } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { UserProvider } from "../context/UserContext";
 import userEvent from "@testing-library/user-event";
+import { setupServer } from "msw/node";
+import { rest } from "msw";
+
+const server = setupServer(
+	// Describe the requests to mock.
+	rest.post("http://localhost:5173/login", (_req, res, ctx) => {
+		return res(
+			ctx.status(200),
+			ctx.json({
+				user: "admin",
+			})
+		);
+	})
+);
+
+beforeAll(() => server.listen());
+afterAll(() => server.close());
 
 describe("Login/logout features", () => {
 	it("Should show Login Page", () => {
