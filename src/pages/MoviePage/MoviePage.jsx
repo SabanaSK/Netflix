@@ -1,13 +1,14 @@
 import { useParams } from "react-router";
 import moviesData from "../../movies.json";
 import "./moviePage.css";
-
+import BookmarkIcon from "../../components/BookmarkIcon/BookmarkIcon";
 export const MoviePage = () => {
 	const { movieId } = useParams();
 	const movieItem = moviesData.find((movie) => movie.id === Number(movieId));
 
 	return (
 		<div>
+			<BookmarkIcon movie={movieItem}/>
 			<h2>{movieItem.title}</h2>
 			<div className="image-info-container">
 				<div className="image-container">
