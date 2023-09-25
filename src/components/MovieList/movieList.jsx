@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./movieList.css";
 import { Link } from "react-router-dom";
+import BookmarkIcon from "../BookmarkIcon/BookmarkIcon";
 
 const MovieList = ({ movies }) => {
 	const settings = {
@@ -24,6 +25,7 @@ const MovieList = ({ movies }) => {
 							<p>Year: {movie.year}</p>
 							<p>Rating: {movie.rating}</p>
 						</Link>
+						<BookmarkIcon movie={movie}/>
 					</div>
 				))}
 			</Slider>
