@@ -7,7 +7,6 @@ import "./movieList.css";
 import { Link } from "react-router-dom";
 
 
-
 const MovieList = ({ movies }) => {
   // Separate movies into Trending and Recommended arrays
   const trendingMovies = movies.filter((movie) => movie.isTrending);
