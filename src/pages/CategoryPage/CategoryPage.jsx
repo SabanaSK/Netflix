@@ -1,5 +1,8 @@
+import { useParams } from "react-router";
+
 const CategoryPage = () => {
-	return <div>CategoryPage</div>;
+	const { categoryName } = useParams();
+	return <div>{categoryName}</div>;
 };
 
 export default CategoryPage;
