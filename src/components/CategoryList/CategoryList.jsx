@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import movies from "../../movies.json";
+import { useNavigate } from "react-router";
 
 const CategoryList = () => {
+	const navigate = useNavigate();
 	const [genresArray, setGenresArray] = useState([]);
-	const [value, setValue] = useState("");
 
 	useEffect(() => {
 		const updatedGenres = [];
@@ -20,22 +21,19 @@ const CategoryList = () => {
 	}, []);
 
 	const handleChange = (event) => {
-		setValue(event.target.value);
+		navigate(`/Netflix/category/${event.target.value}`);
 	};
 
 	return (
 		<div>
-			<label>
-				Category:
-				<select value={value} onChange={handleChange}>
-					<option value="All">All</option>
-					{genresArray.map((genre) => (
-						<option value={genre} key={genre}>
-							{genre}
-						</option>
-					))}
-				</select>
-			</label>
+			<select value="Category" onChange={handleChange}>
+				<option value="">Category</option>
+				{genresArray.map((genre) => (
+					<option value={genre} key={genre}>
+						{genre}
+					</option>
+				))}
+			</select>
 		</div>
 	);
 };
