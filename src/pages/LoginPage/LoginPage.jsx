@@ -34,7 +34,9 @@ export const LoginPage = () => {
 					resetForm();
 					
         } else {
-            setError("Invalid credentials.");
+					setError("Invalid credentials.");
+					console.log('Setting Invalid credentials error'); // Debug log
+    
         }
     };
 
