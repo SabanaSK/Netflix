@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import "./movieList.css";
 import { Link } from "react-router-dom";
 
-
 const MovieList = ({ movies }) => {
   // Separate movies into Trending and Recommended arrays
   const trendingMovies = movies.filter((movie) => movie.isTrending);
@@ -23,7 +22,8 @@ const MovieList = ({ movies }) => {
     slidesToShow: 6,
     slidesToScroll: 1,
   };
- 
+
+
   return (
     <div className="movie-thumbnails-container">
       {/* Trending Movies */}
@@ -33,7 +33,15 @@ const MovieList = ({ movies }) => {
           {trendingMovies.map((movie) => (
             <div key={movie.id} className="movie-thumbnail">
               <Link to={`/Netflix/movie/${movie.id}`}>
-                <img src={movie.thumbnail} alt={movie.title} />
+                <img
+                  src={movie.thumbnail}
+                  alt={movie.title}
+                  onError={({ currentTarget}) =>{
+                    currentTarget.onerror = null;
+                    currentTarget.src = "https://www.gpo.gov/images/default-source/leadership-1/davis.jpg"
+                    
+                  }}
+                />
                 <p>Year: {movie.year}</p>
                 <p>Rating: {movie.rating}</p>
               </Link>
@@ -48,7 +56,14 @@ const MovieList = ({ movies }) => {
           {shuffledRecommendedMovies.map((movie) => (
             <div key={movie.id} className="movie-thumbnail">
               <Link to={`/Netflix/movie/${movie.id}`}>
-                <img src={movie.thumbnail} alt={movie.title} />
+                <img
+                  src={movie.thumbnail}
+                  alt={movie.title}
+                  onError={({ currentTarget}) =>{
+                    currentTarget.onerror = null;
+                    currentTarget.src = "https://www.gpo.gov/images/default-source/leadership-1/davis.jpg"
+                  }}
+                />
                 <p>Year: {movie.year}</p>
                 <p>Rating: {movie.rating}</p>
               </Link>
@@ -67,11 +82,10 @@ MovieList.propTypes = {
       title: PropTypes.string.isRequired,
       year: PropTypes.number.isRequired,
       rating: PropTypes.string.isRequired,
-      isTrending: PropTypes.bool, 
+      isTrending: PropTypes.bool,
     })
   ).isRequired,
 };
-
 
 function shuffleArray(array) {
   const shuffledArray = [...array];
@@ -83,3 +97,5 @@ function shuffleArray(array) {
 }
 
 export default MovieList;
+
+
