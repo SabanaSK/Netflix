@@ -7,11 +7,11 @@ import Movie from "../Movie/Movie";
 import useFilterMovies from "../Filter/useFilterMovies";
 
 const MovieList = ({ movies, query, category }) => {
-	const filteredMovies = useFilterMovies(movies, query, category);
+  const filteredMovies = useFilterMovies(movies, query, category);
 
-  const trendingMovies = filteredMovies.filter(movie => movie.isTrending);
-  const recommendedMovies = filteredMovies.filter(movie => !movie.isTrending);
-  
+  const trendingMovies = filteredMovies.filter((movie) => movie.isTrending);
+  const recommendedMovies = filteredMovies.filter((movie) => !movie.isTrending);
+
   const shuffledRecommendedMovies = shuffleArray(recommendedMovies).slice(0, 8);
 
   const settings = {
@@ -57,8 +57,8 @@ MovieList.propTypes = {
       isTrending: PropTypes.bool,
     })
   ).isRequired,
-	query: PropTypes.string,
-	category: PropTypes.string,
+  query: PropTypes.string,
+  category: PropTypes.string,
 };
 
 function shuffleArray(array) {

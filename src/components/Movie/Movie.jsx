@@ -1,11 +1,19 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import styles from "./Movie.module.css"
+import styles from "./Movie.module.css";
 
 const Movie = ({ movie }) => (
   <div className={styles["movie-thumbnail"]}>
     <Link to={`/Netflix/movie/${movie.id}`}>
-      <img src={movie.thumbnail} alt={movie.title} />
+      <img
+        src={movie.thumbnail}
+        alt={movie.title}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src =
+            "https://www.gpo.gov/images/default-source/leadership-1/davis.jpg";
+        }}
+      />
       <p>Year: {movie.year}</p>
       <p>Rating: {movie.rating}</p>
     </Link>
