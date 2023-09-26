@@ -32,7 +32,7 @@ export const LoginPage = () => {
             loginUser({ user: user.username }); 
             setError("");
 					resetForm();
-					console.log(username);
+					
         } else {
             setError("Invalid credentials.");
         }
