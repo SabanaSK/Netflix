@@ -23,18 +23,6 @@ beforeAll(() => server.listen());
 afterAll(() => server.close());
 
 describe("Login/logout features", () => {
-	it("Should show Login Page", () => {
-		render(
-			<UserProvider>
-				<MemoryRouter initialEntries={["/Netflix"]}>
-					<App />
-				</MemoryRouter>
-			</UserProvider>
-		);
-
-		expect(screen.getByText("Login Page")).toBeInTheDocument();
-	});
-
 	it("Should show Home Page when logged in", async () => {
 		const user = userEvent.setup();
 
@@ -59,9 +47,27 @@ describe("Login/logout features", () => {
 		expect(loginButton).toBeInTheDocument();
 
 		await user.click(loginButton);
-		screen.debug();
-		const homePageText = screen.findByText("HomePage");
+		const homePageText = await screen.findByText("HomePage");
 
 		expect(homePageText).toBeInTheDocument();
+	});
+
+	it("Should show Login Page after logout button is pressed", async () => {
+		const user = userEvent.setup();
+
+		render(
+			<UserProvider>
+				<MemoryRouter initialEntries={["/Netflix"]}>
+					<App />
+				</MemoryRouter>
+			</UserProvider>
+		);
+
+		const logoutButton = screen.getByRole("button", { name: "Logout" });
+		expect(logoutButton).toBeInTheDocument();
+
+		await user.click(logoutButton);
+		const loginPageText = await screen.findByText("Login Page");
+		expect(loginPageText).toBeInTheDocument();
 	});
 });
