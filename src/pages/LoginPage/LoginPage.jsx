@@ -44,28 +44,34 @@ export const LoginPage = () => {
 		setPassword("");
 	};
 
-	return (
-		<div>
-			<h1>Login Page</h1>
-			{error && <p style={{ color: "red" }}>{error}</p>}
-			<input
-				ref={usernameRef}
-				value={username}
-				onChange={(e) => setUsername(e.target.value)}
-				placeholder="Username"
-			/>
-			<input
-				ref={passwordRef}
-				type="password"
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-				placeholder="Password"
-			/>
-			<button className={styles.button} onClick={handleLogin}>
-				Login
-			</button>
-		</div>
-	);
+    return (
+        <div className={styles["login-page"]}>
+            <h1 className={styles["login-page-title"]}>Login Page</h1>
+            <div className={styles["login-page-container"]}>
+            {error && <p className={styles["error-message"]}>{error}</p>}
+                <input
+                    className={styles["login-page-input"]}
+                    ref={usernameRef}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
+                />
+                <input
+                    className={styles["login-page-input"]}
+                    ref={passwordRef}
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                />
+                <button className={styles["login-page-button"]} onClick={handleLogin}>
+                    Login
+                </button>
+               
+            </div>
+        </div>
+    );
+    
 };
 
 export default LoginPage;
