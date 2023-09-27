@@ -6,8 +6,8 @@ import styles from "./movieList.module.css";
 import Movie from "../Movie/Movie";
 import useFilterMovies from "../Filter/useFilterMovies";
 
-const MovieList = ({ movies, query, category }) => {
-  const filteredMovies = useFilterMovies(movies, query, category);
+const MovieList = ({ movies, category }) => {
+  const filteredMovies = useFilterMovies(movies, category);
 
   const trendingMovies = filteredMovies.filter((movie) => movie.isTrending);
   const recommendedMovies = filteredMovies.filter((movie) => !movie.isTrending);
@@ -57,7 +57,6 @@ MovieList.propTypes = {
       isTrending: PropTypes.bool,
     })
   ).isRequired,
-  query: PropTypes.string,
   category: PropTypes.string,
 };
 
