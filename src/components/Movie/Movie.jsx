@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
+import BookmarkIcon from "../BookmarkIcon/BookmarkIcon";
 
 const Movie = ({ movie }) => (
   <div className={styles["movie-thumbnail"]}>
+    <BookmarkIcon movie={movie}/>
     <Link to={`/Netflix/movie/${movie.id}`}>
       <img
         src={movie.thumbnail}
