@@ -1,79 +1,73 @@
 import { useState, useRef, useContext } from "react";
 import styles from "./LoginPage.module.css";
 import { UserContext } from "../../context/UserContext";
+import mockUsers from "../../mock/mockUsers.json";
+
 
 export const LoginPage = () => {
-	const { loginUser } = useContext(UserContext);
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-	const [error, setError] = useState("");
-	const usernameRef = useRef(null);
-	const passwordRef = useRef(null);
+    const { loginUser } = useContext(UserContext);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const usernameRef = useRef(null);
+    const passwordRef = useRef(null);
 
-	const handleLogin = async () => {
-		setError("");
-		if (!username || !password) {
-			setError("Both fields are requried!");
-			return;
-		}
-		if (password.length <= 5) {
-			setError("Password should be more than 5 characters!");
-			return;
-		}
-		try {
-			const response = await fetch("/login", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ username, password }),
-			});
+    const handleLogin = () => {
+        setError("");
 
-			const data = await response.json();
+        if (!username || !password) {
+            setError("Both fields are required!");
+            return;
+        }
 
-			if (response.ok) {
-				loginUser(data);
-				setError("");
-				resetForm();
-				// You can handle JWT or other response data here if needed.
-			} else {
-				setError(data.errorMessage || "An error occurred.");
-			}
-		} catch (err) {
-			setError("An error occurred while logging in.");
-		}
-	};
+        if (password.length <= 5) {
+            setError("Password should be more than 5 characters!");
+            return;
+        }
 
-	const resetForm = () => {
-		setUsername("");
-		setPassword("");
-		/* usernameRef.current.focus(); */
-	};
+        // Find user in mock data
+        const user = mockUsers.find(user => user.username === username && user.password === password);
 
-	return (
-		<div>
-			<h1>Login Page</h1>
+        if (user) {
+            loginUser({ user: user.username }); 
+            setError("");
+					resetForm();
+					
+        } else {
+					setError("Invalid credentials.");
+					console.log('Setting Invalid credentials error'); // Debug log
+    
+        }
+    };
 
-			{error && <p style={{ color: "red" }}>{error}</p>}
+    const resetForm = () => {
+        setUsername("");
+        setPassword("");
+       
+    };
 
-			<input
-				ref={usernameRef}
-				value={username}
-				onChange={(e) => setUsername(e.target.value)}
-				placeholder="Username"
-			/>
-			<input
-				ref={passwordRef}
-				type="password"
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-				placeholder="Password"
-			/>
-			<button className={styles.button} onClick={handleLogin}>
-				Login
-			</button>
-		</div>
-	);
+    return (
+        <div>
+            <h1>Login Page</h1>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            <input
+                ref={usernameRef}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username"
+            />
+            <input
+                ref={passwordRef}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+            />
+            <button className={styles.button} onClick={handleLogin}>
+                Login
+            </button>
+        </div>
+    );
 };
 
 export default LoginPage;

@@ -8,7 +8,7 @@ export const MoviePage = () => {
 
 	return (
 		<div>
-			<BookmarkIcon movie={movieItem}/>
+			<BookmarkIcon movie={movieItem} />
 			<h2>{movieItem.title}</h2>
 			<div className="image-info-container">
 				<div className="image-container">
