@@ -45,3 +45,4 @@ describe("MovieList", () => {
         });
     });
 });
+//All tests are passed
