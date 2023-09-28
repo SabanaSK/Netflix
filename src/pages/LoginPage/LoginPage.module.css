@@ -1,18 +1,85 @@
-.button {
-  background-color: #007BFF;
-  border: none;
-  color: white;
-  padding: 10px 20px;
+
+.login-page {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page-title {
+  color: var(--red);
+  font-size: 2em;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
+  margin-bottom: 15vh;
+}
+
+.login-page-container {
+  max-width: 400px;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.error-message {
+  color: var(--red);
+}
+
+.login-page-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--lightgrey);
+  color: var(--black);
   font-size: 16px;
-  margin: 4px 2px;
+  outline: none;
+
+  &::placeholder {
+      color: var(--black);
+  }
+}
+
+.login-page-button {
+  background-color: var(--red);
+  border: none;
+  color: var(--white);
+  padding: 10px 20px;
+  display: block;
+  font-size: 16px;
+  margin: 20px auto;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+}
 
-  &:hover {
-    background-color: #0056b3;
+.login-page-button:hover {
+  background-color: var(--darkred);
+}
+
+/* max-width = 480px, stylelint context */
+@media screen and (width <= 480px) { 
+  .login-page {
+    display: block;
   }
+
+  .login-page-title {
+   padding-top: 20vh;
+   font-size: 3em;
+  }
+
+  .login-page-container {
+      padding: 20px;
+  }
+
+  .login-page-input {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+
+  .login-page-button {
+    font-size: 30px;
+  }
+ 
 }
