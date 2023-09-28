@@ -67,3 +67,40 @@ describe("Login/logout features", () => {
 		expect(loginPageText).toBeInTheDocument();
 	});
 });
+
+describe("Bookmark features", () => {
+	it("shows 3 correct movies on bookmark page after 3 bookmark icons are clicked on home page", async () => {
+		const user = userEvent.setup();
+
+		render(
+			<UserProvider>
+				<MemoryRouter initialEntries={["/Netflix"]}>
+					<App />
+				</MemoryRouter>
+			</UserProvider>
+		);
+
+		const usernameInput = screen.getByPlaceholderText("Username");
+		await user.type(usernameInput, "admin");
+
+		const passwordInput = screen.getByPlaceholderText("Password");
+		await user.type(passwordInput, "password123");
+
+		const loginButton = screen.getByRole("button", { name: "Login" });
+		await user.click(loginButton);
+
+		let bookmarkIcons = screen.getAllByTestId("bookmark-icon");
+
+		await user.click(bookmarkIcons[5]);
+		await user.click(bookmarkIcons[3]);
+		await user.click(bookmarkIcons[15]);
+
+		const bookmarkLink = screen.getByRole("link", { name: "Bookmark" });
+		expect(bookmarkLink).toHaveAttribute("href", "/Netflix/bookmark");
+
+		await user.click(bookmarkLink);
+
+		bookmarkIcons = screen.getAllByTestId("bookmark-icon");
+		expect(bookmarkIcons.length).toBe(3);
+	});
+});
