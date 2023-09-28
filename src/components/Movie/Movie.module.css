@@ -1,7 +1,3 @@
-body{
-  background-color: beige;
-}
-
 .movie-thumbnail {
   flex-direction: column;
   align-items: center;
