@@ -14,11 +14,14 @@ function App() {
 
 	return (
 		<div>
-			<div>
-				<Link to="/Netflix/">Home</Link>
-				<Link to="/Netflix/bookmark">Bookmark</Link>
-				<button onClick={logoutUser}>Logout</button>
+		{cookies.user &&	<div className="navbar">
+				<div className="nav-links">
+					<Link to="/Netflix/">Home</Link>
+					<Link to="/Netflix/bookmark">Bookmark</Link>
+				</div>
+				<button className="logout-btn" onClick={logoutUser}>Logout</button>
 			</div>
+}
 			<BookmarkProvider>
 				<Routes>
 					<Route

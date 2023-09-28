@@ -1,6 +1,6 @@
 
 .login-page {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-family);
   background-color: var(--black);
   color: var(--white);
   height: 100vh;
@@ -52,10 +52,10 @@
   margin: 20px auto;
   cursor: pointer;
   border-radius: 4px;
-}
 
-.login-page-button:hover {
-  background-color: var(--darkred);
+  &:hover {
+    background-color: var(--darkred);
+  }
 }
 
 /* max-width = 480px, stylelint context */

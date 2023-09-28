@@ -4,6 +4,7 @@
   --red: #E50914;
   --darkred: #831010;
   --lightgrey: #f2f2f2;
+	--font-family: "Helvetica Neue", helvetica, arial, sans-serif;
 }
 
 #root {
@@ -19,3 +20,63 @@ body {
   padding: 0;
 }
 
+.navbar {
+  background-color: var(--black);
+  padding: 1em 4em;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4em;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--white);
+	font-size: 30px;
+	font-family: var(--font-family);
+
+  &:hover {
+    color: var(--red);
+    font-size: 40px;
+  }
+}
+
+.logout-btn {
+  background-color: var(--red);
+  border: none;
+  color: var(--white);
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 4px;
+  margin-left: auto; 
+
+	&:hover {
+		background-color: var(--darkred);
+	}
+}
+
+@media screen and (width <= 880px) { 
+	.navbar {
+		padding-left: 2em;
+	}
+	
+	.nav-links {
+		gap: 2em;
+	}
+
+	.logout-btn {
+		margin-left: 40px; 
+	}
+
+	.navbar a {
+		font-size: 15px;
+	
+		&:hover {
+			font-size: 20px;
+		}
+	}
+}
