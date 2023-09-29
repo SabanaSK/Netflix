@@ -1,0 +1,28 @@
+.netflixSearchBar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid red;
+  border-radius: 50px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+
+  ::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  :focus {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
