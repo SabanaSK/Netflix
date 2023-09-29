@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import moviesData from "../../movies.json";
-import "./moviePage.css";
+import styles from "./Movie.module.css"
 import BookmarkIcon from "../../components/BookmarkIcon/BookmarkIcon";
 export const MoviePage = () => {
   const { movieId } = useParams();
@@ -8,14 +8,16 @@ export const MoviePage = () => {
 
   return (
     <div>
-      <BookmarkIcon movie={movieItem} />
       <h2>{movieItem.title}</h2>
-      <div className="image-info-container">
-        <div className="image-container">
+      <div className={styles["image-info-container"]}>
+        <div className={styles["image-container"]}>
+        <div className={styles["bookmark-icon"]}>
+        <BookmarkIcon movie={movieItem} />
+        </div>
           <img
             src={movieItem.thumbnail}
             alt={movieItem.title}
-            className="movie-img"
+            className={styles["movie-img"]}
             onError={({ currentTarget }) => {
               currentTarget.onerror = null;
               currentTarget.src =
@@ -23,19 +25,20 @@ export const MoviePage = () => {
             }}
           />
         </div>
-        <div className="info-container">
+        <div className={styles["info-container"]}>
           <p>
-            {movieItem.year}, <span className="rating">{movieItem.rating}</span>
+            {movieItem.year}, <span className={styles["rating"]}>{movieItem.rating}</span>
           </p>
-          <p>Cast:</p>
-          <ul className="actor-list">
+          <h3>Cast</h3>
+          <ul className={styles["actor-list"]}>
             {movieItem.actors.map((actor, idx) => (
               <li key={idx}>{actor}</li>
             ))}
           </ul>
-
-          <p>Genre: {movieItem.genre}</p>
-          <p>Synopsis: {movieItem.synopsis}</p>
+          <h3>Genre</h3>
+          <p>{movieItem.genre}</p>
+          <h3>Synopsis</h3>
+          <p>{movieItem.synopsis}</p>
         </div>
       </div>
     </div>
