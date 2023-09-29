@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
-import movies from "../../movies.json";
 import { useNavigate } from "react-router";
+import useFilterMovies from "../../hooks/useFilterMovies";
 
 const CategoryList = () => {
 	const navigate = useNavigate();
+	const movies = useFilterMovies();
 	const [genresArray, setGenresArray] = useState([]);
 
 	useEffect(() => {
-		const updatedGenres = [];
+		const trimmedGenres = [];
 
 		movies.forEach((movie) => {
 			const genres = movie.genre.split(",").map((genre) => genre.trim());
 			genres.map((genre) => {
-				if (!updatedGenres.includes(genre)) {
-					updatedGenres.push(genre);
+				if (!trimmedGenres.includes(genre)) {
+					trimmedGenres.push(genre);
 				}
 			});
 		});
-		setGenresArray(updatedGenres);
-	}, []);
+		setGenresArray(trimmedGenres);
+	}, [movies]);
 
 	const handleChange = (event) => {
 		navigate(`/Netflix/category/${event.target.value}`);

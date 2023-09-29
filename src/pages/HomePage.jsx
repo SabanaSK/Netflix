@@ -1,20 +1,19 @@
 import { useState } from "react";
 import MovieList from "../components/MovieList/movieList";
 import SearchBar from "../components/Searchbar/Searchbar";
-import moviesData from "../movies.json";
 import CategoryList from "../components/CategoryList/CategoryList";
 import Movie from "../components/Movie/Movie";
-import useFilterMovies from "../components/Filter/useFilterMovies";
+import useFilterMovies from "../hooks/useFilterMovies";
 
 export const HomePage = () => {
 	const [searchQuery, setSearchQuery] = useState("");
-	const filteredMovies = useFilterMovies(moviesData, searchQuery);
+	const filteredMovies = useFilterMovies({ searchQuery });
 
 	return (
 		<div>
 			<p>HomePage</p>
 			<CategoryList />
-			<SearchBar setSearchQuery={setSearchQuery}  />
+			<SearchBar setSearchQuery={setSearchQuery} />
 
 			{searchQuery ? (
 				<div>
@@ -24,7 +23,7 @@ export const HomePage = () => {
 					))}
 				</div>
 			) : (
-				<MovieList movies={moviesData} />
+				<MovieList />
 			)}
 		</div>
 	);
