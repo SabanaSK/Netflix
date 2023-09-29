@@ -13,7 +13,7 @@ const SearchBar = ({ setSearchQuery }) => {
         type="text"
         placeholder="Search..."
         onChange={handleInputChange}
-        className={styles.netflixSearchBar}
+        className={styles[ 'search-bar' ]}
       />
     </div>
   );
