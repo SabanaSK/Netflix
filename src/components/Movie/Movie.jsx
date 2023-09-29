@@ -5,8 +5,10 @@ import BookmarkIcon from "../BookmarkIcon/BookmarkIcon";
 
 const Movie = ({ movie }) => (
   <div className={styles["movie-thumbnail"]}>
+    <div  className={styles["bookmark-icon"]}>
     <BookmarkIcon movie={movie}/>
-    <Link to={`/Netflix/movie/${movie.id}`}>
+    </div>
+    <Link to={`/Netflix/movie/${movie.id}`} className={styles["link-style"]}>
       <img
         src={movie.thumbnail}
         alt={movie.title}
