@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { BookmarkContext } from "../context/BookmarkContext";
-import Movie from "../components/Movie/Movie";
+import { BookmarkContext} from "../../context/BookmarkContext";
+import Movie from "../../components/Movie/Movie";
 
-const Bookmarks = () => {
+const BookmarkPage = () => {
   const { bookmarks } = useContext(BookmarkContext);
 
   if (bookmarks.length === 0) {
@@ -21,4 +21,4 @@ const Bookmarks = () => {
   );
 }
 
-export default Bookmarks;
+export default BookmarkPage;
