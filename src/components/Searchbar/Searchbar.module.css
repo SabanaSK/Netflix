@@ -1,0 +1,28 @@
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid var(--red);
+  border-radius: 50px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+
+  ::placeholder {
+    color: var(--lightgrey);
+  }
+
+  :focus {
+    box-shadow: 0 0 10px var(--darkred);
+  }
+
+  @media (width <=768px) {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  @media (width <=480px) {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
