@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import moviesData from "../../movies.json";
-import styles from "./Movie.module.css"
+import styles from "./MoviePage.module.css"
 import BookmarkIcon from "../../components/BookmarkIcon/BookmarkIcon";
 export const MoviePage = () => {
   const { movieId } = useParams();

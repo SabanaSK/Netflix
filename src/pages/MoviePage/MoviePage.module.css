@@ -51,17 +51,6 @@
 	color: var(--darkred);
 }
 
-h2 {
-  color: var(--red);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-	padding: 1em;
-}
-
-p {
-  color: var(--darkred); 
-  margin-bottom: 1rem;
-}
 
 @media screen and (width <= 480px) { 
 	.image-info-container {

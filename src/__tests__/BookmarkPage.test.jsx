@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { it, describe, expect } from "vitest";
 import { BookmarkProvider } from "../context/BookmarkContext";
-import BookmarkPage from "../pages/BookmarkPage";
+import BookmarkPage from "../pages/BookmarkPage/BookmarkPage";
 import moviesData from "../movies.json";
 import { MemoryRouter } from "react-router";
 import userEvent from "@testing-library/user-event";
