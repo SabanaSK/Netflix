@@ -3,7 +3,7 @@ import "./App.css";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { MoviePage } from "./pages/MoviePage/MoviePage";
-import BookmarkPage from "./pages/BookmarkPage";
+import BookmarkPage from "./pages/BookmarkPage/BookmarkPage";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import { BookmarkProvider } from "./context/BookmarkContext";
 import { useContext } from "react";
