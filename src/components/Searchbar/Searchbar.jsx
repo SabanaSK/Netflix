@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import styles from "./Searchbar.module.css"
 
 const SearchBar = ({ setSearchQuery }) => {
@@ -13,7 +13,7 @@ const SearchBar = ({ setSearchQuery }) => {
         type="text"
         placeholder="Search..."
         onChange={handleInputChange}
-        className={styles[ 'search-bar' ]}
+        className={styles[ "search-bar" ]}
       />
     </div>
   );

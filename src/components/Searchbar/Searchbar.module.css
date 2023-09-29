@@ -9,11 +9,11 @@
   transition: box-shadow 0.3s ease;
 
   ::placeholder {
-    color: rgb(255 255 255 / 50%);
+    color: var(--lightgrey);
   }
 
   :focus {
-    box-shadow: 0 0 10px rgb(255 0 0 / 50%);
+    box-shadow: 0 0 10px var(--darkred);
   }
 
   @media (width <=768px) {
