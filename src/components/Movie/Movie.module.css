@@ -19,3 +19,13 @@
   margin: 5px 0; 
 }
 
+@media (width<=768px) {
+  .movie-thumbnail {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .movie-thumbnail img {
+    max-height: 200px;
+  }
+}
