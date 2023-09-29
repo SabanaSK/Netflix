@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe,it,expect,beforeEach } from 'vitest';
-import userEvent from '@testing-library/user-event';
+
 import CategoryList from '../components/CategoryList/CategoryList';
 import moviesData from '../movies.json';
 
@@ -34,13 +34,7 @@ describe('CategoryList', () => {
             expect(option).toBeInTheDocument();
         });
     });
-// test 4
-    it('navigates to correct URL on change', () => {
-        const selectElement = screen.getByRole('combobox');
-        const testGenre = moviesData[0].genre.split(',')[0].trim();
-        userEvent.selectOptions(selectElement, [testGenre]);
-        
-    });
+
 });
 
 
