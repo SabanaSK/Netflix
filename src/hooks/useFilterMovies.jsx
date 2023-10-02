@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import movies from "../movies.json";
+/* import movies from "../movies.json"; */
+import movies from "../__tests__/mockMovies.json";
 
 const useFilterMovies = (query) => {
 	return useMemo(() => {
