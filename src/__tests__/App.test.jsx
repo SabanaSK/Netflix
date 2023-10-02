@@ -1,9 +1,15 @@
 import App from "../App";
-import { it, describe, expect, afterEach } from "vitest";
+import { it, describe, expect, afterEach, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { UserProvider } from "../context/UserContext";
 import userEvent from "@testing-library/user-event";
+
+//get mock data from mockMovies.json
+vi.mock("../movies.json", async () => {
+	const actual = await vi.importActual("./mockMovies.json");
+	return actual;
+});
 
 const removeCookie = (name) => {
 	document.cookie = `${name}=1; expires=1 Jan 1970 00:00:00 GMT;`;
@@ -89,18 +95,25 @@ describe("Bookmark features", () => {
 		const loginButton = screen.getByRole("button", { name: "Login" });
 		await user.click(loginButton);
 
-		let bookmarkIcons = screen.getAllByTestId("bookmark-icon");
+		const bookmarkIcons = screen.getAllByTestId("bookmark-icon");
 
 		await user.click(bookmarkIcons[5]);
 		await user.click(bookmarkIcons[3]);
-		await user.click(bookmarkIcons[15]);
+		await user.click(bookmarkIcons[2]);
 
 		const bookmarkLink = screen.getByRole("link", { name: "Bookmark" });
 		expect(bookmarkLink).toHaveAttribute("href", "/Netflix/bookmark");
 
 		await user.click(bookmarkLink);
 
-		bookmarkIcons = screen.getAllByTestId("bookmark-icon");
-		expect(bookmarkIcons.length).toBe(3);
+		const movieAltText1 = screen.getByAltText(
+			"Star Wars: Episode V - The Empire Strikes Back"
+		);
+		const movieAltText2 = screen.getByAltText("Casablanca");
+		const movieAltText3 = screen.getByAltText("Psycho");
+
+		expect(movieAltText1).toBeInTheDocument();
+		expect(movieAltText2).toBeInTheDocument();
+		expect(movieAltText3).toBeInTheDocument();
 	});
 });
