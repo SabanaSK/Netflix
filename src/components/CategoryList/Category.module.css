@@ -1,0 +1,23 @@
+.category-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; 
+  margin-bottom: 2rem; 
+}
+
+.category-dropdown {
+  width: 200px;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 1rem;
+  border: 1px solid var(--darkred);
+  border-radius: 5px;
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+}
+
+.category-dropdown:focus {
+  outline-color: var(--red);
+}

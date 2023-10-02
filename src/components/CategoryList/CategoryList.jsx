@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import useFilterMovies from "../../hooks/useFilterMovies";
+import styles from "./Category.module.css";
 
 const CategoryList = () => {
 	const navigate = useNavigate();
@@ -26,17 +27,17 @@ const CategoryList = () => {
 	};
 
 	return (
-		<div>
-			<select value="Category" onChange={handleChange}>
-				<option value="">Category</option>
-				{genresArray.map((genre) => (
-					<option value={genre} key={genre}>
-						{genre}
-					</option>
-				))}
-			</select>
+		<div className={styles["category-container"]}>
+				<select className={styles["category-dropdown"]} value="Category" onChange={handleChange}>
+						<option value="">Category</option>
+						{genresArray.map((genre) => (
+								<option value={genre} key={genre}>
+										{genre}
+								</option>
+						))}
+				</select>
 		</div>
-	);
+);
 };
 
 export default CategoryList;

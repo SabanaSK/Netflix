@@ -1,9 +1,9 @@
 import { useState } from "react";
-import MovieList from "../components/MovieList/movieList";
-import SearchBar from "../components/Searchbar/Searchbar";
-import CategoryList from "../components/CategoryList/CategoryList";
-import Movie from "../components/Movie/Movie";
-import useFilterMovies from "../hooks/useFilterMovies";
+import MovieList from "../../components/MovieList/movieList"; 
+import SearchBar from "../../components/Searchbar/Searchbar";
+import CategoryList from "../../components/CategoryList/CategoryList";
+import Movie from "../../components/Movie/Movie";
+import useFilterMovies from "../../hooks/useFilterMovies";	
 
 export const HomePage = () => {
 	const [searchQuery, setSearchQuery] = useState("");
@@ -11,10 +11,9 @@ export const HomePage = () => {
 
 	return (
 		<div>
-			<p>HomePage</p>
+			<h2>HomePage</h2>
 			<CategoryList />
-			<SearchBar setSearchQuery={setSearchQuery} />
-
+			<SearchBar setSearchQuery={setSearchQuery}  />
 			{searchQuery ? (
 				<div>
 					<h2>Search Results</h2>
