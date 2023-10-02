@@ -11,7 +11,7 @@ export const HomePage = () => {
 
   return (
     <div>
-      <p>HomePage</p>
+      <h2>HomePage</h2>
       <CategoryList />
       <SearchBar setSearchQuery={setSearchQuery} />
 
