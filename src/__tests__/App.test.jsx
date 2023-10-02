@@ -15,12 +15,12 @@ const removeCookie = (name) => {
 	document.cookie = `${name}=1; expires=1 Jan 1970 00:00:00 GMT;`;
 };
 
-describe("Login/logout features", () => {
-	//Removes cookies to not contsminate tests
-	afterEach(() => {
-		removeCookie("user");
-	});
+//Removes cookies to not contaminate tests
+afterEach(() => {
+	removeCookie("user");
+});
 
+describe("Login/logout features", () => {
 	it("Should show Home Page when logged in", async () => {
 		const user = userEvent.setup();
 
@@ -115,5 +115,52 @@ describe("Bookmark features", () => {
 		expect(movieAltText1).toBeInTheDocument();
 		expect(movieAltText2).toBeInTheDocument();
 		expect(movieAltText3).toBeInTheDocument();
+	});
+});
+
+describe("Search features", () => {
+	it("shows correct number of movies when e, em, emp and empi is typed in searchbar, final movie is empire strikes back", async () => {
+		const user = userEvent.setup();
+
+		render(
+			<UserProvider>
+				<MemoryRouter initialEntries={["/Netflix"]}>
+					<App />
+				</MemoryRouter>
+			</UserProvider>
+		);
+
+		const usernameInput = screen.getByPlaceholderText("Username");
+		await user.type(usernameInput, "admin");
+
+		const passwordInput = screen.getByPlaceholderText("Password");
+		await user.type(passwordInput, "password123");
+
+		const loginButton = screen.getByRole("button", { name: "Login" });
+		await user.click(loginButton);
+
+		const searchInput = screen.getByPlaceholderText("Search...");
+		await user.type(searchInput, "e");
+
+		const movieList = screen.getAllByTestId("movie-thumbnail");
+		expect(movieList.length).toBe(9);
+
+		await user.type(searchInput, "m");
+
+		const movieList2 = screen.getAllByTestId("movie-thumbnail");
+		expect(movieList2.length).toBe(2);
+
+		await user.type(searchInput, "p");
+		const movieList3 = screen.getAllByTestId("movie-thumbnail");
+		expect(movieList3.length).toBe(2);
+
+		await user.type(searchInput, "i");
+		const movieList4 = screen.getAllByTestId("movie-thumbnail");
+		expect(movieList4.length).toBe(1);
+
+		const movieTitle = screen.getByAltText(
+			"Star Wars: Episode V - The Empire Strikes Back"
+		);
+		expect(movieTitle).toBeInTheDocument();
 	});
 });
