@@ -1,22 +1,20 @@
 import { useParams } from "react-router";
-import movies from "../../movies.json";
 import Movie from "../../components/Movie/Movie";
+import useFilterMovies from "../../hooks/useFilterMovies";
 
 const CategoryPage = () => {
-  const { categoryName } = useParams();
+	const { categoryName } = useParams();
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.genre.includes(categoryName)
-  );
+	const filteredMovies = useFilterMovies({ category: categoryName });
 
-  return (
-    <div>
-      <h2>{categoryName}</h2>
-      {filteredMovies.map((movie) => (
-        <Movie key={movie.id} movie={movie} />
-      ))}
-    </div>
-  );
+	return (
+		<div>
+			<h2>{categoryName}</h2>
+			{filteredMovies.map((movie) => (
+				<Movie key={movie.id} movie={movie} />
+			))}
+		</div>
+	);
 };
 
 export default CategoryPage;
