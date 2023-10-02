@@ -1,0 +1,128 @@
+[
+	{
+		"id": 1,
+		"title": "The Shawshank Redemption",
+		"year": 1994,
+		"rating": "R",
+		"actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
+		"genre": "Drama",
+		"synopsis": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+	},
+	{
+		"id": 2,
+		"title": "The Godfather",
+		"year": 1972,
+		"rating": "R",
+		"actors": ["Marlon Brando", "Al Pacino", "James Caan"],
+		"genre": "Crime, Drama",
+		"synopsis": "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+	},
+	{
+		"id": 3,
+		"title": "The Godfather: Part II",
+		"year": 1974,
+		"rating": "R",
+		"actors": ["Al Pacino", "Robert De Niro", "Robert Duvall"],
+		"genre": "Crime, Drama",
+		"synopsis": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+		"isTrending": true
+	},
+	{
+		"id": 4,
+		"title": "The Dark Knight",
+		"year": 2008,
+		"rating": "PG-13",
+		"actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+		"genre": "Action, Crime, Drama",
+		"synopsis": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
+	},
+	{
+		"id": 9,
+		"title": "The Good, the Bad and the Ugly",
+		"year": 1966,
+		"rating": "Not Rated",
+		"actors": ["Clint Eastwood", "Lee Van Cleef", "Eli Wallach"],
+		"genre": "Western",
+		"synopsis": "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BOTQ5NDI3MTI4MF5BMl5BanBnXkFtZTgwNDQ4ODE5MDE@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
+	},
+	{
+		"id": 10,
+		"title": "Fight Club",
+		"year": 1999,
+		"rating": "R",
+		"actors": ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
+		"genre": "Drama",
+		"synopsis": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BMjJmYTNkNmItYjYyZC00MGUxLWEyZmUtZTg1ZDM1YjNhOWE4XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+		"isTrending": true
+	},
+	{
+		"id": 11,
+		"title": "Forrest Gump",
+		"year": 1994,
+		"rating": "PG-13",
+		"actors": ["Tom Hanks", "Robin Wright", "Gary Sinise"],
+		"genre": "Drama, Romance",
+		"synopsis": "The history of the United States from the 1950s to the '70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
+	},
+	{
+		"id": 14,
+		"title": "Star Wars: Episode V - The Empire Strikes Back",
+		"year": 1980,
+		"rating": "PG",
+		"actors": ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
+		"genre": "Action, Adventure, Fantasy",
+		"synopsis": "After the Rebels are overpowered by the Empire, Luke Skywalker begins his Jedi training with Yoda, while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+		"isTrending": true
+	},
+	{
+		"id": 15,
+		"title": "The Matrix",
+		"year": 1999,
+		"rating": "R",
+		"actors": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+		"genre": "Action, Sci-Fi",
+		"synopsis": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
+	},
+	{
+		"id": 20,
+		"title": "Casablanca",
+		"year": 1942,
+		"rating": "PG",
+		"actors": ["Humphrey Bogart", "Ingrid Bergman", "Paul Henreid"],
+		"genre": "Drama, Romance, War",
+		"synopsis": "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_QL75_UX380_CR0,5,380,562_.jpg",
+		"isTrending": true
+	},
+	{
+		"id": 28,
+		"title": "Terminator 2: Judgment Day",
+		"year": 1991,
+		"rating": "R",
+		"actors": ["Arnold Schwarzenegger", "Linda Hamilton", "Edward Furlong"],
+		"genre": "Action, Sci-Fi",
+		"synopsis": "A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her ten year old son John from an even more advanced and powerful cyborg.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+		"isTrending": true
+	},
+	{
+		"id": 30,
+		"title": "Psycho",
+		"year": 1960,
+		"rating": "R",
+		"actors": ["Anthony Perkins", "Janet Leigh", "Vera Miles"],
+		"genre": "Horror, Mystery, Thriller",
+		"synopsis": "A Phoenix secretary embezzles $40,000 from her employer's client, goes on the run and checks into a remote motel run by a young man under the domination of his mother.",
+		"thumbnail": "https://m.media-amazon.com/images/M/MV5BNTQwNDM1YzItNDAxZC00NWY2LTk0M2UtNDIwNWI5OGUyNWUxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+		"isTrending": true
+	}
+]
