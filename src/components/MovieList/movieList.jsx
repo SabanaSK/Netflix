@@ -5,6 +5,11 @@ import styles from "./movieList.module.css";
 import Movie from "../Movie/Movie";
 import useFilterMovies from "../../hooks/useFilterMovies";
 
+/**
+ * - render movies based on trending and recommended
+ * - carousel with react-slick
+ */
+
 const shuffleArray = (array) => {
 	const shuffledArray = [...array];
 
@@ -18,12 +23,11 @@ const shuffleArray = (array) => {
 
 const MovieList = () => {
 	const movies = useFilterMovies();
-
 	const trendingMovies = movies.filter((movie) => movie.isTrending);
 	const recommendedMovies = movies.filter((movie) => !movie.isTrending);
 	const shuffledRecommendedMovies = shuffleArray(recommendedMovies).slice(0, 8);
 
-	const settings = {
+	const sliderSettings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
@@ -36,7 +40,7 @@ const MovieList = () => {
 			{/* Trending Movies */}
 			<div className={styles["movie-section"]}>
 				<h2>Trending</h2>
-				<Slider {...settings}>
+				<Slider {...sliderSettings}>
 					{trendingMovies.map((movie) => (
 						<Movie key={movie.id} movie={movie} />
 					))}
@@ -46,7 +50,7 @@ const MovieList = () => {
 			{/* Recommended Movies */}
 			<div className={styles["movie-section"]}>
 				<h2>Recommended for You</h2>
-				<Slider {...settings}>
+				<Slider {...sliderSettings}>
 					{shuffledRecommendedMovies.map((movie) => (
 						<Movie key={movie.id} movie={movie} />
 					))}

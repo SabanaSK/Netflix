@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import styles from "./BookmarkIcon.module.css";
 import { BookmarkContext } from "../../context/BookmarkContext";
 
+/**
+ * - toggles bookmarked movie
+ * - take a movie as prop
+ */
+
 const BookmarkIcon = ({ movie }) => {
 	const { bookmarks, addBookmark, removeBookmark } =
 		useContext(BookmarkContext);

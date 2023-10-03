@@ -1,6 +1,11 @@
 import { useMemo } from "react";
 import movies from "../movies.json";
 
+/**
+ * - return movies based on query
+ * - takes searchQuery, category or movieId as prop query
+ */
+
 const useFilterMovies = (query) => {
 	return useMemo(() => {
 		let filteredMovies = [...movies];

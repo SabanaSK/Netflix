@@ -3,6 +3,11 @@ import styles from "./MoviePage.module.css";
 import BookmarkIcon from "../../components/BookmarkIcon/BookmarkIcon";
 import useFilterMovies from "../../hooks/useFilterMovies";
 
+/**
+ * - render information about movie
+ * - get movieId from params
+ */
+
 export const MoviePage = () => {
 	const { movieId } = useParams();
 	const movieItem = useFilterMovies({ movieId });
