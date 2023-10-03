@@ -2,6 +2,11 @@ import { useParams } from "react-router";
 import Movie from "../../components/Movie/Movie";
 import useFilterMovies from "../../hooks/useFilterMovies";
 
+/**
+ * - render movies based on category
+ * - get categoryName from params
+ */
+
 const CategoryPage = () => {
 	const { categoryName } = useParams();
 

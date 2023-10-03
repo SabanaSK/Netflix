@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 import BookmarkIcon from "../BookmarkIcon/BookmarkIcon";
 
+/**
+ * - render movie image, rating and year
+ */
+
 const Movie = ({ movie }) => (
 	<div className={styles["movie-thumbnail"]} data-testid="movie-thumbnail">
 		<div className={styles["bookmark-icon"]}>
