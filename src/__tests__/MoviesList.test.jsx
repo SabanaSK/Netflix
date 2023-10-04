@@ -40,7 +40,7 @@ describe("MovieList", () => {
 
         // For each trending movie by imges
         trendingMovieImages.forEach(src => {
-            const movieImgElement = document.querySelector(`img[src="${src}"]`);
+            const movieImgElement = screen.querySelector(`img[src="${src}"]`);
             expect(movieImgElement).toBeInTheDocument();
         });
     });
