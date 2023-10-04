@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { it, describe, expect, beforeEach } from "vitest";
 import MovieList from "../components/MovieList/movieList";
-import moviesData from "../movies.json";
+import moviesData from "./mockMovies.json"
 import { BookmarkProvider } from "../context/BookmarkContext";
 import { UserProvider } from "../context/UserContext";
 import { MemoryRouter } from "react-router";
@@ -36,13 +36,14 @@ describe("MovieList", () => {
         // Filter out movies that are trending
         const trendingMovieImages = moviesData
             .filter(movie => movie.isTrending)
-            .map(movie => movie.thumbnail);
-
+            .map(movie => movie.title);
+        console.log(trendingMovieImages);
         // For each trending movie by imges
-        trendingMovieImages.forEach(src => {
-            const movieImgElement = screen.querySelector(`img[src="${src}"]`);
+        trendingMovieImages.forEach(movie => {
+            const movieImgElement = screen.getByAltText(movie);
             expect(movieImgElement).toBeInTheDocument();
         });
-    });
+    
 });
-//All tests are passed
+
+    });
