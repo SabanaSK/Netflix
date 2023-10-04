@@ -24,6 +24,13 @@
 
 .error-message {
   color: var(--red);
+  height: 20px; 
+  margin-bottom: 10px;
+  visibility: hidden; 
+}
+
+.error-message:not(:empty) {
+  visibility: visible;
 }
 
 .login-page-input {
