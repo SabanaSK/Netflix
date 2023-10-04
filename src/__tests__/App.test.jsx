@@ -27,7 +27,7 @@ describe("Login/logout features", () => {
 
 		render(
 			<UserProvider>
-				<MemoryRouter initialEntries={["/Netflix"]}>
+				<MemoryRouter initialEntries={["/"]}>
 					<App />
 				</MemoryRouter>
 			</UserProvider>
@@ -51,7 +51,7 @@ describe("Login/logout features", () => {
 
 		render(
 			<UserProvider>
-				<MemoryRouter initialEntries={["/Netflix"]}>
+				<MemoryRouter initialEntries={["/"]}>
 					<App />
 				</MemoryRouter>
 			</UserProvider>
@@ -82,7 +82,7 @@ describe("Bookmark features", () => {
 
 		render(
 			<UserProvider>
-				<MemoryRouter initialEntries={["/Netflix"]}>
+				<MemoryRouter initialEntries={["/"]}>
 					<App />
 				</MemoryRouter>
 			</UserProvider>
@@ -118,8 +118,7 @@ describe("Bookmark features", () => {
 		const bookmark3 = within(movieThumbnail[1]).getByTestId("bookmark-icon");
 		await user.click(bookmark3);
 		const bookmarkLink = screen.getByRole("link", { name: "Bookmark" });
-
-		expect(bookmarkLink).toHaveAttribute("href", "/Netflix/bookmark");
+		expect(bookmarkLink).toHaveAttribute("href", "/bookmark");
 
 		await user.click(bookmarkLink);
 
@@ -142,7 +141,7 @@ describe("Bookmark features", () => {
 
 		render(
 			<UserProvider>
-				<MemoryRouter initialEntries={["/Netflix"]}>
+				<MemoryRouter initialEntries={["/"]}>
 					<App />
 				</MemoryRouter>
 			</UserProvider>
@@ -201,7 +200,7 @@ describe("Search features", () => {
 
 		render(
 			<UserProvider>
-				<MemoryRouter initialEntries={["/Netflix"]}>
+				<MemoryRouter initialEntries={["/"]}>
 					<App />
 				</MemoryRouter>
 			</UserProvider>

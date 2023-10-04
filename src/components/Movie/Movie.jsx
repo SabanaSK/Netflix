@@ -12,7 +12,7 @@ const Movie = ({ movie }) => (
 		<div className={styles["bookmark-icon"]}>
 			<BookmarkIcon movie={movie} />
 		</div>
-		<Link to={`/Netflix/movie/${movie.id}`} className={styles["link-style"]}>
+		<Link to={`/movie/${movie.id}`} className={styles["link-style"]}>
 			<img
 				src={movie.thumbnail}
 				alt={movie.title}

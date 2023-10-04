@@ -14,66 +14,39 @@ function App() {
 
 	return (
 		<div>
-		{cookies.user &&	<div className="navbar">
-				<div className="nav-links">
-					<Link to="/Netflix/">Home</Link>
-					<Link to="/Netflix/bookmark">Bookmark</Link>
+			{cookies.user && (
+				<div className="navbar">
+					<div className="nav-links">
+						<Link to="/">Home</Link>
+						<Link to="/bookmark">Bookmark</Link>
+					</div>
+					<button className="logout-btn" onClick={logoutUser}>
+						Logout
+					</button>
 				</div>
-				<button className="logout-btn" onClick={logoutUser}>Logout</button>
-			</div>
-}
+			)}
 			<BookmarkProvider>
 				<Routes>
 					<Route
-						path="/Netflix/"
-						element={
-							cookies.user ? (
-								<HomePage />
-							) : (
-								<Navigate to="/Netflix/login" />
-							)
-						}
+						path="/"
+						element={cookies.user ? <HomePage /> : <Navigate to="/login" />}
 					/>
 					<Route
-						path="/Netflix/movie/:movieId"
-						element={
-							cookies.user ? (
-								<MoviePage />
-							) : (
-								<Navigate to="/Netflix/login" />
-							)
-						}
+						path="/movie/:movieId"
+						element={cookies.user ? <MoviePage /> : <Navigate to="/login" />}
 					/>
 					<Route
-						path="/Netflix/bookmark"
-						element={
-							cookies.user ? (
-								<BookmarkPage />
-							) : (
-								<Navigate to="/Netflix/login" />
-							)
-						}
+						path="/bookmark"
+						element={cookies.user ? <BookmarkPage /> : <Navigate to="/login" />}
 					/>
 					<Route
-						path="/Netflix/login"
-						element={
-							!cookies.user ? (
-								<LoginPage />
-							) : (
-								<Navigate to="/Netflix/" />
-							)
-						}
+						path="/login"
+						element={!cookies.user ? <LoginPage /> : <Navigate to="/" />}
 					/>
 
 					<Route
-						path="/Netflix/category/:categoryName"
-						element={
-							cookies.user ? (
-								<CategoryPage />
-							) : (
-								<Navigate to="/Netflix/login" />
-							)
-						}
+						path="/category/:categoryName"
+						element={cookies.user ? <CategoryPage /> : <Navigate to="/login" />}
 					/>
 				</Routes>
 			</BookmarkProvider>

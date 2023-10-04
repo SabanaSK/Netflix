@@ -12,7 +12,7 @@ describe("Movie", () => {
 		render(
 			<UserProvider>
 				<BookmarkProvider>
-					<MemoryRouter initialEntries={["/Netflix"]}>
+					<MemoryRouter initialEntries={["/"]}>
 						<Movie movie={movieItem} />
 					</MemoryRouter>
 				</BookmarkProvider>
@@ -32,7 +32,7 @@ describe("Movie", () => {
 		render(
 			<UserProvider>
 				<BookmarkProvider>
-					<MemoryRouter initialEntries={["/Netflix"]}>
+					<MemoryRouter initialEntries={["/"]}>
 						<Movie movie={movieItem} />
 					</MemoryRouter>
 				</BookmarkProvider>

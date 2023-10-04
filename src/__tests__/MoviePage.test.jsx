@@ -8,12 +8,9 @@ describe("MoviePage", () => {
 	it("Should show correct title, year, synopsis and rating", async () => {
 		render(
 			<BookmarkProvider>
-				<MemoryRouter initialEntries={["/Netflix/movie/2"]}>
+				<MemoryRouter initialEntries={["/movie/2"]}>
 					<Routes>
-						<Route
-							path="/Netflix/movie/:movieId"
-							element={<MoviePage />}
-						/>
+						<Route path="/movie/:movieId" element={<MoviePage />} />
 					</Routes>
 				</MemoryRouter>
 			</BookmarkProvider>
@@ -38,10 +35,7 @@ describe("MoviePage", () => {
 			<BookmarkProvider>
 				<MemoryRouter initialEntries={["/Netflix/movie/2"]}>
 					<Routes>
-						<Route
-							path="/Netflix/movie/:movieId"
-							element={<MoviePage />}
-						/>
+						<Route path="/Netflix/movie/:movieId" element={<MoviePage />} />
 					</Routes>
 				</MemoryRouter>
 			</BookmarkProvider>
