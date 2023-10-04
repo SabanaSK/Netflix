@@ -54,7 +54,9 @@ export const LoginPage = () => {
 		<div className={styles["login-page"]}>
 			<h1 className={styles["login-page-title"]}>Login Page</h1>
 			<div className={styles["login-page-container"]}>
-				{error && <p className={styles["error-message"]}>{error}</p>}
+			<p className={styles["error-message"]}>
+				{error}
+			</p>
 				<input
 					className={styles["login-page-input"]}
 					ref={usernameRef}
