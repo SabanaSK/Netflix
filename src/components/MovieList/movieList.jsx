@@ -32,7 +32,19 @@ const MovieList = () => {
 		infinite: true,
 		speed: 500,
 		slidesToShow: 6,
-		slidesToScroll: 1,
+    slidesToScroll: 1,
+		responsive: [
+			{breakpoint: 700,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1,
+				}},
+			{breakpoint: 580,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+  }
+	}]
 	};
 
 	return (
