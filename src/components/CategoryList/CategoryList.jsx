@@ -27,7 +27,7 @@ const CategoryList = () => {
 	}, [movies]);
 
 	const handleChange = (event) => {
-		navigate(`/Netflix/category/${event.target.value}`);
+		navigate(`/category/${event.target.value}`);
 	};
 
 	return (
