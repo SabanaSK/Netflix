@@ -25,7 +25,7 @@ describe("Bookmarks features", () => {
 
 		render(
 			<BookmarkProvider>
-				<MemoryRouter initialEntries={["/Netflix/bookmark"]}>
+				<MemoryRouter initialEntries={["/bookmark"]}>
 					<BookmarkPage />
 				</MemoryRouter>
 			</BookmarkProvider>
@@ -46,7 +46,7 @@ describe("Bookmarks features", () => {
 
 		render(
 			<BookmarkProvider>
-				<MemoryRouter initialEntries={["/Netflix/bookmark"]}>
+				<MemoryRouter initialEntries={["/bookmark"]}>
 					<BookmarkPage />
 				</MemoryRouter>
 			</BookmarkProvider>
