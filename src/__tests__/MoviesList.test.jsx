@@ -1,17 +1,22 @@
 import { render, screen } from "@testing-library/react";
-import { it, describe, expect, beforeEach } from "vitest";
+import { it, describe, expect, beforeEach, vi } from "vitest";
 import MovieList from "../components/MovieList/movieList";
 import moviesData from "./mockMovies.json"
 import { BookmarkProvider } from "../context/BookmarkContext";
 import { UserProvider } from "../context/UserContext";
 import { MemoryRouter } from "react-router";
 
+vi.mock("../movies.json", async () => {
+	const actual = await vi.importActual("./mockMovies.json");
+	return actual;
+});
+
 describe("MovieList", () => {
     beforeEach(() => {
         render(
             <UserProvider>
                 <BookmarkProvider>
-                    <MemoryRouter initialEntries={["/Netflix"]}>
+                    <MemoryRouter initialEntries={["/"]}>
                         <MovieList movies={moviesData} />
                     </MemoryRouter>
                 </BookmarkProvider>
@@ -41,6 +46,7 @@ describe("MovieList", () => {
         // For each trending movie by imges
         trendingMovieImages.forEach(movie => {
             const movieImgElement = screen.getByAltText(movie);
+            
             expect(movieImgElement).toBeInTheDocument();
         });
     
