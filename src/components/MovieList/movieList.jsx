@@ -38,7 +38,7 @@ const MovieList = () => {
 	return (
 		<div>
 			{/* Trending Movies */}
-			<div className={styles["movie-section"]}>
+			<div className={styles["movie-section"]} data-testid="trending">
 				<h2>Trending</h2>
 				<Slider {...sliderSettings}>
 					{trendingMovies.map((movie) => (
@@ -48,7 +48,7 @@ const MovieList = () => {
 			</div>
 
 			{/* Recommended Movies */}
-			<div className={styles["movie-section"]}>
+			<div className={styles["movie-section"]} data-testid="recommended">
 				<h2>Recommended for You</h2>
 				<Slider {...sliderSettings}>
 					{shuffledRecommendedMovies.map((movie) => (

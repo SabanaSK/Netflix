@@ -1,6 +1,6 @@
 import App from "../App";
 import { it, describe, expect, afterEach, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { UserProvider } from "../context/UserContext";
 import userEvent from "@testing-library/user-event";
@@ -18,6 +18,7 @@ const removeCookie = (name) => {
 //Removes cookies to not contaminate tests
 afterEach(() => {
 	removeCookie("user");
+	window.localStorage.clear();
 });
 
 describe("Login/logout features", () => {
@@ -75,8 +76,9 @@ describe("Login/logout features", () => {
 });
 
 describe("Bookmark features", () => {
-	it("shows 3 correct movies on bookmark page after 3 bookmark icons are clicked on home page", async () => {
+	it("shows 3 correct movies on bookmark page after 3 bookmark icons are clicked from trending list", async () => {
 		const user = userEvent.setup();
+		const movieTitles = [];
 
 		render(
 			<UserProvider>
@@ -95,26 +97,101 @@ describe("Bookmark features", () => {
 		const loginButton = screen.getByRole("button", { name: "Login" });
 		await user.click(loginButton);
 
-		const bookmarkIcons = screen.getAllByTestId("bookmark-icon");
+		const trending = screen.getByTestId("trending");
 
-		await user.click(bookmarkIcons[5]);
-		await user.click(bookmarkIcons[3]);
-		await user.click(bookmarkIcons[2]);
+		const movieThumbnail = within(trending).getAllByTestId("movie-thumbnail");
+		const movie = within(movieThumbnail[2]).getByRole("img");
+		movieTitles.push(movie.alt);
 
+		const bookmark = within(movieThumbnail[2]).getByTestId("bookmark-icon");
+		await user.click(bookmark);
+
+		const movie2 = within(movieThumbnail[5]).getByRole("img");
+		movieTitles.push(movie2.alt);
+
+		const bookmark2 = within(movieThumbnail[5]).getByTestId("bookmark-icon");
+		await user.click(bookmark2);
+
+		const movie3 = within(movieThumbnail[1]).getByRole("img");
+		movieTitles.push(movie3.alt);
+
+		const bookmark3 = within(movieThumbnail[1]).getByTestId("bookmark-icon");
+		await user.click(bookmark3);
 		const bookmarkLink = screen.getByRole("link", { name: "Bookmark" });
+
 		expect(bookmarkLink).toHaveAttribute("href", "/Netflix/bookmark");
 
 		await user.click(bookmarkLink);
 
-		const movieAltText1 = screen.getByAltText(
-			"Star Wars: Episode V - The Empire Strikes Back"
-		);
-		const movieAltText2 = screen.getByAltText("Casablanca");
-		const movieAltText3 = screen.getByAltText("Psycho");
+		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
+		expect(movieThumbnail2.length).toBe(3);
 
-		expect(movieAltText1).toBeInTheDocument();
-		expect(movieAltText2).toBeInTheDocument();
-		expect(movieAltText3).toBeInTheDocument();
+		const movieThumbnailAlts = movieThumbnail2.map((movie) => {
+			const movieImg = within(movie).getByRole("img");
+			return movieImg.alt;
+		});
+
+		movieTitles.forEach((title) => {
+			expect(movieThumbnailAlts).toContain(title);
+		});
+	});
+
+	it("shows 3 correct movies on bookmark page after 3 bookmark icons are clicked from recommended list", async () => {
+		const user = userEvent.setup();
+		const movieTitles = [];
+
+		render(
+			<UserProvider>
+				<MemoryRouter initialEntries={["/Netflix"]}>
+					<App />
+				</MemoryRouter>
+			</UserProvider>
+		);
+
+		const usernameInput = screen.getByPlaceholderText("Username");
+		await user.type(usernameInput, "admin");
+
+		const passwordInput = screen.getByPlaceholderText("Password");
+		await user.type(passwordInput, "password123");
+
+		const loginButton = screen.getByRole("button", { name: "Login" });
+		await user.click(loginButton);
+
+		const recommended = screen.getByTestId("recommended");
+
+		const movieThumbnail =
+			within(recommended).getAllByTestId("movie-thumbnail");
+		const movie = within(movieThumbnail[2]).getByRole("img");
+		movieTitles.push(movie.alt);
+
+		const bookmark = within(movieThumbnail[2]).getByTestId("bookmark-icon");
+		await user.click(bookmark);
+
+		const movie2 = within(movieThumbnail[5]).getByRole("img");
+		movieTitles.push(movie2.alt);
+
+		const bookmark2 = within(movieThumbnail[5]).getByTestId("bookmark-icon");
+		await user.click(bookmark2);
+
+		const movie3 = within(movieThumbnail[1]).getByRole("img");
+		movieTitles.push(movie3.alt);
+
+		const bookmark3 = within(movieThumbnail[1]).getByTestId("bookmark-icon");
+		await user.click(bookmark3);
+		const bookmarkLink = screen.getByRole("link", { name: "Bookmark" });
+
+		await user.click(bookmarkLink);
+
+		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
+		expect(movieThumbnail2.length).toBe(3);
+		const movieThumbnailAlts = movieThumbnail2.map((movie) => {
+			const movieImg = within(movie).getByRole("img");
+			return movieImg.alt;
+		});
+
+		movieTitles.forEach((title) => {
+			expect(movieThumbnailAlts).toContain(title);
+		});
 	});
 });
 
