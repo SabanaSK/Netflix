@@ -17,7 +17,7 @@ describe("LoginPage", () => {
     });
 
    it("renders the login page", () => {
-        expect(screen.getByText("Login Page")).toBeInTheDocument();
+        expect(screen.getByPlaceholderText("Username")).toBeInTheDocument();
     });
 
     it("displays an error when fields are empty", async () => { 

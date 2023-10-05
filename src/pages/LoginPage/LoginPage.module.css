@@ -3,18 +3,12 @@
   font-family: var(--font-family);
   background-color: var(--black);
   color: var(--white);
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.login-page-title {
-  color: var(--red);
-  font-size: 2em;
-  text-align: center;
-  margin-bottom: 15vh;
-}
 
 .login-page-container {
   max-width: 400px;
@@ -34,19 +28,16 @@
 }
 
 .login-page-input {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin-bottom: 10px;
+  margin-top: 20px;
   border: none;
   border-radius: 4px;
-  background-color: var(--lightgrey);
   color: var(--black);
-  font-size: 16px;
+  font-size: 20px;
   outline: none;
 
-  &::placeholder {
-      color: var(--black);
-  }
 }
 
 .login-page-button {
@@ -68,12 +59,7 @@
 /* max-width = 480px, stylelint context */
 @media screen and (width <= 480px) { 
   .login-page {
-    display: block;
-  }
-
-  .login-page-title {
-   padding-top: 20vh;
-   font-size: 3em;
+    display: flex;
   }
 
   .login-page-container {
@@ -83,6 +69,9 @@
   .login-page-input {
     font-size: 30px;
     margin-bottom: 30px;
+    margin-top: 0;
+    width: 100%;
+    padding: 5px 0;
   }
 
   .login-page-button {

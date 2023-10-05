@@ -52,7 +52,6 @@ export const LoginPage = () => {
 
 	return (
 		<div className={styles["login-page"]}>
-			<h1 className={styles["login-page-title"]}>Login Page</h1>
 			<div className={styles["login-page-container"]}>
 			<p className={styles["error-message"]}>
 				{error}
