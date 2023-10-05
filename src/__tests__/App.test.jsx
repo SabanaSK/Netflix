@@ -41,7 +41,7 @@ describe("Login/logout features", () => {
 		const loginButton = screen.getByRole("button", { name: "Login" });
 
 		await user.click(loginButton);
-		const homePageText = await screen.findByText("HomePage");
+		const homePageText = await screen.findByText("Trending");
 
 		expect(homePageText).toBeInTheDocument();
 	});
@@ -69,8 +69,8 @@ describe("Login/logout features", () => {
 		const logoutButton = screen.getAllByRole("button", { name: "Logout" });
 
 		await user.click(logoutButton[0]);
-		const loginPageText = await screen.findByText("Login Page");
-		expect(loginPageText).toBeInTheDocument();
+		const usernameInput2 = screen.getByPlaceholderText("Username");
+		expect(usernameInput2).toBeInTheDocument();
 	});
 });
 
