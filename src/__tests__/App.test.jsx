@@ -6,10 +6,10 @@ import { UserProvider } from "../context/UserContext";
 import userEvent from "@testing-library/user-event";
 
 //get mock data from mockMovies.json
-vi.mock("../movies.json", async () => {
-	const actual = await vi.importActual("./mockMovies.json");
-	return actual;
-});
+vi.mock(
+	"../movies.json",
+	async () => await vi.importActual("./mockMovies.json")
+);
 
 const removeCookie = (name) => {
 	document.cookie = `${name}=1; expires=1 Jan 1970 00:00:00 GMT;`;
