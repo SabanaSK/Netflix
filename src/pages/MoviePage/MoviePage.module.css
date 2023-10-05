@@ -59,6 +59,7 @@
 
 	.info-container {
 			flex: initial; 
+      text-align:left ;
 	}
 
 	.image-container { 

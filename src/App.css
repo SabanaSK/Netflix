@@ -25,7 +25,7 @@ h2 {
   color: var(--red);
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 1em;
+  padding: 25px 0;
   font-size: 30px;
 }
 
@@ -88,7 +88,7 @@ p {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .navbar a {
@@ -136,7 +136,7 @@ p {
 
   .side-menu{
     width: 48vw;
-    height: 29%;
+    height: 16%;
   }
 
   .nav-links {
@@ -170,6 +170,7 @@ p {
 
   .logout-btn {
     margin-left: 1rem;
+    width: 86%;
   }
 
   .side-menu{
