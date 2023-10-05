@@ -21,37 +21,41 @@ describe("LoginPage", () => {
     });
 
     it("displays an error when fields are empty", async () => { 
-       await userEvent.click(screen.getByText("Login"));
+        const user = userEvent.setup();
+        await user.click(screen.getByText("Login"));
         await waitFor(() => { 
             expect(screen.getByText("Both fields are required!")).toBeInTheDocument();
         });
     });
 
     it("displays an error when the password is too short", async () => {
-      await  userEvent.type(screen.getByPlaceholderText("Username"), "admin");
-       await userEvent.type(screen.getByPlaceholderText("Password"), "123");
+        const user = userEvent.setup();
+        await user.type(screen.getByPlaceholderText("Username"), "admin");
+        await user.type(screen.getByPlaceholderText("Password"), "123");
 
-        userEvent.click(screen.getByText("Login"));
+        await user.click(screen.getByText("Login"));
         await waitFor(() => { 
             expect(screen.getByText("Password should be more than 5 characters!")).toBeInTheDocument();
         });
     });
 
     it("successfully logs in with valid credentials from mock data", async () => { 
-    await   userEvent.type(screen.getByPlaceholderText("Username"), "admin");
-     await   userEvent.type(screen.getByPlaceholderText("Password"), "admin123");
+        const user = userEvent.setup();
+        await user.type(screen.getByPlaceholderText("Username"), "admin");
+        await user.type(screen.getByPlaceholderText("Password"), "admin123");
 
-        userEvent.click(screen.getByText("Login"));
-        await waitFor(() => { // Use waitFor
+        await user.click(screen.getByText("Login"));
+        waitFor(() => { 
             expect(screen.queryByText("Invalid credentials.")).not.toBeInTheDocument();
         });
     });
 
-    it("displays an error with invalid credentials", async () => { // Mark the test as async
-     await  userEvent.type(screen.getByPlaceholderText("Username"), "unknown");
-       await userEvent.type(screen.getByPlaceholderText("Password"), "unknown123");
+    it("displays an error with invalid credentials", async () => { 
+        const user = userEvent.setup();
+        await user.type(screen.getByPlaceholderText("Username"), "unknown");
+        await user.type(screen.getByPlaceholderText("Password"), "unknown123");
 
-       await userEvent.click(screen.getByText("Login"));
+        await user.click(screen.getByText("Login"));
         await waitFor(() => { 
             expect(screen.getByText("Invalid credentials.")).toBeInTheDocument();
         });
