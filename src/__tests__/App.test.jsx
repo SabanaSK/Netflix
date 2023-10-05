@@ -66,10 +66,9 @@ describe("Login/logout features", () => {
 		const loginButton = screen.getByRole("button", { name: "Login" });
 		await user.click(loginButton);
 
-		const logoutButton = screen.getByRole("button", { name: "Logout" });
-		expect(logoutButton).toBeInTheDocument();
+		const logoutButton = screen.getAllByRole("button", { name: "Logout" });
 
-		await user.click(logoutButton);
+		await user.click(logoutButton[0]);
 		const loginPageText = await screen.findByText("Login Page");
 		expect(loginPageText).toBeInTheDocument();
 	});
@@ -117,10 +116,10 @@ describe("Bookmark features", () => {
 
 		const bookmark3 = within(movieThumbnail[1]).getByTestId("bookmark-icon");
 		await user.click(bookmark3);
-		const bookmarkLink = screen.getByRole("link", { name: "Bookmark" });
-		expect(bookmarkLink).toHaveAttribute("href", "/bookmark");
+		const bookmarkLink = screen.getAllByRole("link", { name: "Bookmark" });
+		expect(bookmarkLink[0]).toHaveAttribute("href", "/bookmark");
 
-		await user.click(bookmarkLink);
+		await user.click(bookmarkLink[0]);
 
 		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
 		expect(movieThumbnail2.length).toBe(3);
@@ -177,9 +176,9 @@ describe("Bookmark features", () => {
 
 		const bookmark3 = within(movieThumbnail[1]).getByTestId("bookmark-icon");
 		await user.click(bookmark3);
-		const bookmarkLink = screen.getByRole("link", { name: "Bookmark" });
+		const bookmarkLink = screen.getAllByRole("link", { name: "Bookmark" });
 
-		await user.click(bookmarkLink);
+		await user.click(bookmarkLink[0]);
 
 		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
 		expect(movieThumbnail2.length).toBe(3);

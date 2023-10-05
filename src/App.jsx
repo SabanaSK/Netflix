@@ -6,24 +6,33 @@ import { MoviePage } from "./pages/MoviePage/MoviePage";
 import BookmarkPage from "./pages/BookmarkPage/BookmarkPage";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import { BookmarkProvider } from "./context/BookmarkContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "./context/UserContext";
 
 function App() {
 	const { cookies, logoutUser } = useContext(UserContext);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
 		<div>
-			{cookies.user && (
-				<div className="navbar">
-					<div className="nav-links">
-						<Link to="/">Home</Link>
-						<Link to="/bookmark">Bookmark</Link>
-					</div>
-					<button className="logout-btn" onClick={logoutUser}>
-						Logout
-					</button>
-				</div>
+    {cookies.user && (
+      <div className="navbar">
+        <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className={`side-menu ${isMenuOpen ? "side-menu-open" : ""}`}>
+          <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link to="/bookmark" onClick={() => setIsMenuOpen(false)}>Bookmark</Link>
+          <button className="logout-btn" onClick={logoutUser}>Logout</button>
+        </div>
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/bookmark">Bookmark</Link>
+					<button className="logout-btn" onClick={logoutUser}>Logout</button>
+        </div>
+      </div>
 			)}
 			<BookmarkProvider>
 				<Routes>
