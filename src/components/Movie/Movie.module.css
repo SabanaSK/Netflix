@@ -2,6 +2,7 @@
   position: relative;
   display: inline-block;
   width: 150px;
+  height: 380px;
   margin: 1rem;
   border: 1px solid var(--white);
   border-radius: 5px;
@@ -22,7 +23,7 @@
 
 .movie-thumbnail p {
   margin: 0.5rem;
-  font-size: 12px;
+ font-size: 14px; 
   color: var(--white);
   background-color: var(--darkblack);
   padding: 0.25rem;
@@ -47,6 +48,7 @@
   text-decoration: none;
   color: inherit;
 }
+
 
 @media screen and (width <=480px) {
   .movie-thumbnail {
