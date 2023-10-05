@@ -98,33 +98,33 @@ describe("Bookmark features", () => {
 
 		const trending = screen.getByTestId("trending");
 
-		const movieThumbnail = within(trending).getAllByTestId("movie-thumbnail");
-		const movie = within(movieThumbnail[2]).getByRole("img");
+		const movieContainer = within(trending).getAllByTestId("movie-container");
+		const movie = within(movieContainer[2]).getByRole("img");
 		movieTitles.push(movie.alt);
 
-		const bookmark = within(movieThumbnail[2]).getByTestId("bookmark-icon");
+		const bookmark = within(movieContainer[2]).getByTestId("bookmark-icon");
 		await user.click(bookmark);
 
-		const movie2 = within(movieThumbnail[5]).getByRole("img");
+		const movie2 = within(movieContainer[5]).getByRole("img");
 		movieTitles.push(movie2.alt);
 
-		const bookmark2 = within(movieThumbnail[5]).getByTestId("bookmark-icon");
+		const bookmark2 = within(movieContainer[5]).getByTestId("bookmark-icon");
 		await user.click(bookmark2);
 
-		const movie3 = within(movieThumbnail[1]).getByRole("img");
+		const movie3 = within(movieContainer[1]).getByRole("img");
 		movieTitles.push(movie3.alt);
 
-		const bookmark3 = within(movieThumbnail[1]).getByTestId("bookmark-icon");
+		const bookmark3 = within(movieContainer[1]).getByTestId("bookmark-icon");
 		await user.click(bookmark3);
 		const bookmarkLink = screen.getAllByRole("link", { name: "Bookmark" });
 		expect(bookmarkLink[0]).toHaveAttribute("href", "/bookmark");
 
 		await user.click(bookmarkLink[0]);
 
-		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
-		expect(movieThumbnail2).toHaveLength(3);
+		const movieContainer2 = screen.getAllByTestId("movie-container");
+		expect(movieContainer2).toHaveLength(3);
 
-		const movieThumbnailAlts = movieThumbnail2.map((movie) => {
+		const movieThumbnailAlts = movieContainer2.map((movie) => {
 			const movieImg = within(movie).getByRole("img");
 			return movieImg.alt;
 		});
@@ -157,33 +157,33 @@ describe("Bookmark features", () => {
 
 		const recommended = screen.getByTestId("recommended");
 
-		const movieThumbnail =
-			within(recommended).getAllByTestId("movie-thumbnail");
-		const movie = within(movieThumbnail[2]).getByRole("img");
+		const movieContainer =
+			within(recommended).getAllByTestId("movie-container");
+		const movie = within(movieContainer[2]).getByRole("img");
 		movieTitles.push(movie.alt);
 
-		const bookmark = within(movieThumbnail[2]).getByTestId("bookmark-icon");
+		const bookmark = within(movieContainer[2]).getByTestId("bookmark-icon");
 		await user.click(bookmark);
 
-		const movie2 = within(movieThumbnail[5]).getByRole("img");
+		const movie2 = within(movieContainer[5]).getByRole("img");
 		movieTitles.push(movie2.alt);
 
-		const bookmark2 = within(movieThumbnail[5]).getByTestId("bookmark-icon");
+		const bookmark2 = within(movieContainer[5]).getByTestId("bookmark-icon");
 		await user.click(bookmark2);
 
-		const movie3 = within(movieThumbnail[1]).getByRole("img");
+		const movie3 = within(movieContainer[1]).getByRole("img");
 		movieTitles.push(movie3.alt);
 
-		const bookmark3 = within(movieThumbnail[1]).getByTestId("bookmark-icon");
+		const bookmark3 = within(movieContainer[1]).getByTestId("bookmark-icon");
 		await user.click(bookmark3);
 		const bookmarkLink = screen.getAllByRole("link", { name: "Bookmark" });
 
 		await user.click(bookmarkLink[0]);
 
-		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
-		expect(movieThumbnail2).toHaveLength(3);
+		const movieContainer2 = screen.getAllByTestId("movie-container");
+		expect(movieContainer2).toHaveLength(3);
 
-		const movieThumbnailAlts = movieThumbnail2.map((movie) => {
+		const movieThumbnailAlts = movieContainer2.map((movie) => {
 			const movieImg = within(movie).getByRole("img");
 			return movieImg.alt;
 		});
@@ -218,20 +218,20 @@ describe("Search features", () => {
 		const searchInput = screen.getByPlaceholderText("Search...");
 		await user.type(searchInput, "e");
 
-		const movieList = screen.getAllByTestId("movie-thumbnail");
+		const movieList = screen.getAllByTestId("movie-container");
 		expect(movieList).toHaveLength(9);
 
 		await user.type(searchInput, "m");
 
-		const movieList2 = screen.getAllByTestId("movie-thumbnail");
+		const movieList2 = screen.getAllByTestId("movie-container");
 		expect(movieList2).toHaveLength(2);
 
 		await user.type(searchInput, "p");
-		const movieList3 = screen.getAllByTestId("movie-thumbnail");
+		const movieList3 = screen.getAllByTestId("movie-container");
 		expect(movieList3).toHaveLength(2);
 
 		await user.type(searchInput, "i");
-		const movieList4 = screen.getAllByTestId("movie-thumbnail");
+		const movieList4 = screen.getAllByTestId("movie-container");
 		expect(movieList4).toHaveLength(1);
 
 		const movieTitle = screen.getByAltText(
