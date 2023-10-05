@@ -46,7 +46,7 @@ describe("MoviePage", () => {
 		const actor2 = within(actorList[1]).getByText("Al Pacino");
 		const actor3 = within(actorList[2]).getByText("James Caan");
 
-		expect(actorList.length).toBe(3);
+		expect(actorList).toHaveLength(3);
 		expect(actor1).toBeInTheDocument();
 		expect(actor2).toBeInTheDocument();
 		expect(actor3).toBeInTheDocument();
