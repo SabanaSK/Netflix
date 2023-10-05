@@ -1,6 +1,6 @@
 import App from "../App";
 import { it, describe, expect, afterEach, vi } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { UserProvider } from "../context/UserContext";
 import userEvent from "@testing-library/user-event";
@@ -19,7 +19,20 @@ const removeCookie = (name) => {
 afterEach(() => {
 	removeCookie("user");
 	window.localStorage.clear();
+	cleanup();
 });
+
+const login = async (user, screen) => {
+	const usernameInput = screen.getByPlaceholderText("Username");
+	await user.type(usernameInput, "admin");
+
+	const passwordInput = screen.getByPlaceholderText("Password");
+	await user.type(passwordInput, "password123");
+
+	const loginButton = screen.getByRole("button", { name: "Login" });
+
+	await user.click(loginButton);
+};
 
 describe("Login/logout features", () => {
 	it("Should show Home Page when logged in", async () => {
@@ -32,15 +45,9 @@ describe("Login/logout features", () => {
 				</MemoryRouter>
 			</UserProvider>
 		);
-		const usernameInput = screen.getByPlaceholderText("Username");
-		await user.type(usernameInput, "admin");
 
-		const passwordInput = screen.getByPlaceholderText("Password");
-		await user.type(passwordInput, "password123");
+		login(user, screen);
 
-		const loginButton = screen.getByRole("button", { name: "Login" });
-
-		await user.click(loginButton);
 		const homePageText = await screen.findByText("Trending");
 
 		expect(homePageText).toBeInTheDocument();
@@ -57,16 +64,11 @@ describe("Login/logout features", () => {
 			</UserProvider>
 		);
 
-		const usernameInput = screen.getByPlaceholderText("Username");
-		await user.type(usernameInput, "admin");
+		login(user, screen);
 
-		const passwordInput = screen.getByPlaceholderText("Password");
-		await user.type(passwordInput, "password123");
-
-		const loginButton = screen.getByRole("button", { name: "Login" });
-		await user.click(loginButton);
-
-		const logoutButton = screen.getAllByRole("button", { name: "Logout" });
+		const logoutButton = await screen.findAllByRole("button", {
+			name: "Logout",
+		});
 
 		await user.click(logoutButton[0]);
 		const usernameInput2 = screen.getByPlaceholderText("Username");
@@ -87,16 +89,9 @@ describe("Bookmark features", () => {
 			</UserProvider>
 		);
 
-		const usernameInput = screen.getByPlaceholderText("Username");
-		await user.type(usernameInput, "admin");
+		login(user, screen);
 
-		const passwordInput = screen.getByPlaceholderText("Password");
-		await user.type(passwordInput, "password123");
-
-		const loginButton = screen.getByRole("button", { name: "Login" });
-		await user.click(loginButton);
-
-		const trending = screen.getByTestId("trending");
+		const trending = await screen.findByTestId("trending");
 
 		const movieThumbnail = within(trending).getAllByTestId("movie-thumbnail");
 		const movie = within(movieThumbnail[2]).getByRole("img");
@@ -146,16 +141,9 @@ describe("Bookmark features", () => {
 			</UserProvider>
 		);
 
-		const usernameInput = screen.getByPlaceholderText("Username");
-		await user.type(usernameInput, "admin");
+		login(user, screen);
 
-		const passwordInput = screen.getByPlaceholderText("Password");
-		await user.type(passwordInput, "password123");
-
-		const loginButton = screen.getByRole("button", { name: "Login" });
-		await user.click(loginButton);
-
-		const recommended = screen.getByTestId("recommended");
+		const recommended = await screen.findByTestId("recommended");
 
 		const movieThumbnail =
 			within(recommended).getAllByTestId("movie-thumbnail");
@@ -206,16 +194,11 @@ describe("Search features", () => {
 			</UserProvider>
 		);
 
-		const usernameInput = screen.getByPlaceholderText("Username");
-		await user.type(usernameInput, "admin");
+		login(user, screen);
 
-		const passwordInput = screen.getByPlaceholderText("Password");
-		await user.type(passwordInput, "password123");
+		screen.debug();
 
-		const loginButton = screen.getByRole("button", { name: "Login" });
-		await user.click(loginButton);
-
-		const searchInput = screen.getByPlaceholderText("Search...");
+		const searchInput = await screen.findByPlaceholderText("Search...");
 		await user.type(searchInput, "e");
 
 		const movieList = screen.getAllByTestId("movie-thumbnail");
