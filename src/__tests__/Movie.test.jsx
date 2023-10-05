@@ -28,7 +28,7 @@ describe("Movie", () => {
 	});
 
 	it("should show correct image src", () => {
-		const movieItem = moviesData[0];
+	const movieItem = moviesData[0];
 		render(
 			<UserProvider>
 				<BookmarkProvider>
@@ -40,8 +40,7 @@ describe("Movie", () => {
 		);
 
 		const movieImage = screen.getByAltText("The Shawshank Redemption");
-
-		expect(movieImage).toHaveAttribute(
+     expect(movieImage).toHaveAttribute(
 			"src",
 			"https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
 		);
