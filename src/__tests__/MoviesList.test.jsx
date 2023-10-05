@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { it, describe, expect, beforeEach, vi } from "vitest";
+import { render, screen,within } from "@testing-library/react";
+import { it, describe, expect, beforeEach, vi} from "vitest";
 import MovieList from "../components/MovieList/movieList";
 import moviesData from "./mockMovies.json"
 import { BookmarkProvider } from "../context/BookmarkContext";
@@ -29,21 +29,27 @@ describe("MovieList", () => {
         expect(screen.getByRole("heading", { name: /recommended for you/i })).toBeInTheDocument();
     });
 
-    it("renders movies in the Recommended section by image source", () => {
-        const godfatherImageSrc = "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg";
-        const godfatherImgElement = document.querySelector(`img[src="${godfatherImageSrc}"]`);
-        expect(godfatherImgElement).toBeInTheDocument();
-
+    it("renders Recommended movie", () => {
+    
+    const recommendedMovieTitles = moviesData
+        .filter(movie => !movie.isTrending)
+        .map(movie => movie.title);
+    
+    
+    recommendedMovieTitles.forEach(movieTitle => {
+        const movieImgElement = screen.getByAltText(movieTitle);            
+        expect(movieImgElement).toBeInTheDocument();
+    });
         
     });
+    
 
-    it("renders movies in the Trending section by image source", () => {
-        // Filter out movies that are trending
+it("renders Trending movies", () => {
+        
         const trendingMovieImages = moviesData
             .filter(movie => movie.isTrending)
             .map(movie => movie.title);
         console.log(trendingMovieImages);
-        // For each trending movie by imges
         trendingMovieImages.forEach(movie => {
             const movieImgElement = screen.getByAltText(movie);
             
@@ -51,5 +57,19 @@ describe("MovieList", () => {
         });
     
 });
+    
+
+    it("renders the correct number of movies in the Recommended section", () => {
+        const recommended = screen.getByTestId("recommended");
+        const movieThumbnail = within(recommended).getAllByRole("img");
+        expect(movieThumbnail).toHaveLength(6); 
+    });
+
+    it("renders the correct number of movies in the Trending section", () =>
+    {
+        const treading = screen.getByTestId("trending");
+        const movieThumbnail = within(treading).getAllByRole("img");
+        expect(movieThumbnail).toHaveLength(6); 
+    })
 
     });

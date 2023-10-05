@@ -28,7 +28,7 @@ describe("Movie", () => {
 	});
 
 	it("should show correct image src", () => {
-		const movieItem = moviesData[0];
+	const movieItem = moviesData[0];
 		render(
 			<UserProvider>
 				<BookmarkProvider>
