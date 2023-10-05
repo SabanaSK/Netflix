@@ -46,9 +46,28 @@ describe("MoviePage", () => {
 		const actor2 = within(actorList[1]).getByText("Al Pacino");
 		const actor3 = within(actorList[2]).getByText("James Caan");
 
-		expect(actorList.length).toBe(3);
+		expect(actorList).toHaveLength(3);
 		expect(actor1).toBeInTheDocument();
 		expect(actor2).toBeInTheDocument();
 		expect(actor3).toBeInTheDocument();
+	});
+
+	it("Should show an image", () => {
+		render(
+			<BookmarkProvider>
+				<MemoryRouter initialEntries={["/Netflix/movie/2"]}>
+					<Routes>
+						<Route path="/Netflix/movie/:movieId" element={<MoviePage />} />
+					</Routes>
+				</MemoryRouter>
+			</BookmarkProvider>
+		);
+
+		const movieImage = screen.getByRole("img");
+		expect(movieImage).toBeInTheDocument();
+		expect(movieImage).toHaveAttribute(
+			"src",
+			"https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+		);
 	});
 });
