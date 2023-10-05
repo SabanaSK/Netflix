@@ -122,7 +122,7 @@ describe("Bookmark features", () => {
 		await user.click(bookmarkLink[0]);
 
 		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
-		expect(movieThumbnail2.length).toBe(3);
+		expect(movieThumbnail2).toHaveLength(3);
 
 		const movieThumbnailAlts = movieThumbnail2.map((movie) => {
 			const movieImg = within(movie).getByRole("img");
@@ -181,7 +181,8 @@ describe("Bookmark features", () => {
 		await user.click(bookmarkLink[0]);
 
 		const movieThumbnail2 = screen.getAllByTestId("movie-thumbnail");
-		expect(movieThumbnail2.length).toBe(3);
+		expect(movieThumbnail2).toHaveLength(3);
+
 		const movieThumbnailAlts = movieThumbnail2.map((movie) => {
 			const movieImg = within(movie).getByRole("img");
 			return movieImg.alt;
@@ -218,20 +219,20 @@ describe("Search features", () => {
 		await user.type(searchInput, "e");
 
 		const movieList = screen.getAllByTestId("movie-thumbnail");
-		expect(movieList.length).toBe(9);
+		expect(movieList).toHaveLength(9);
 
 		await user.type(searchInput, "m");
 
 		const movieList2 = screen.getAllByTestId("movie-thumbnail");
-		expect(movieList2.length).toBe(2);
+		expect(movieList2).toHaveLength(2);
 
 		await user.type(searchInput, "p");
 		const movieList3 = screen.getAllByTestId("movie-thumbnail");
-		expect(movieList3.length).toBe(2);
+		expect(movieList3).toHaveLength(2);
 
 		await user.type(searchInput, "i");
 		const movieList4 = screen.getAllByTestId("movie-thumbnail");
-		expect(movieList4.length).toBe(1);
+		expect(movieList4).toHaveLength(1);
 
 		const movieTitle = screen.getByAltText(
 			"Star Wars: Episode V - The Empire Strikes Back"
